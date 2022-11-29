@@ -1,0 +1,73 @@
+{% extends "template/base.html" %} {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        *{
+            background-color:rgb(41, 39, 39);
+            color: #fff;
+        }
+
+        .form-control{
+          background-color: #f8f9fa;
+          padding: 5px 5px;
+          margin-bottom: 1.3rem;
+        }
+        .form-control:focus {
+
+          color: #000000;
+          background-color: #ffffff;
+          border: 3px solid #da5767;
+          outline: 0;
+          box-shadow: none;      
+        }
+        .signup {
+          margin:0 auto;
+          max-width:500px;
+        }
+        .signup-header {
+        color:#fff;
+        text-align:center;
+        font-size:300%;
+        padding-top: 2rem;
+        margin-top: 10rem;
+        }
+        .form-group{
+          margin: -1rem;
+        }
+    </style>
+    <title>Signup</title>
+</head>
+<body>
+  {% block content %}
+  <div class="signup">
+  <div class="signup-header">
+  <form action="{% url 'bright_money:create-user' %}" method="POST">
+    {% csrf_token %}
+    <div class="card-body py-md-4">
+       <div class="form-group">
+            <input type="text" class="form-control" name="username" id="name" placeholder="Username">
+       </div>
+       <div class="form-group">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+       </div>                    
+       <div class="form-group">
+       <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+       </div>
+       <button class="btn btn-primary">Create Account</button>
+    </div>
+  </form> 
+  </div>
+  </div>
+  {% endblock %} 
+
+</body>
+
+
+
+
+
+
+

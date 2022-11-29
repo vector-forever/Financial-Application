@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %} {% endblock %} {% load static %}
+    <style>
+
+      *{
+          background-color:rgb(41, 39, 39);
+          color: #fff;
+      }
+  
+      .login-form{
+          margin:0 auto;
+          max-width:153px;
+      }
+      .login-header {
+        color:#fff;
+        text-align:center;
+        font-size:300%;
+        padding-top: 2rem;
+        margin-top: 2rem;
+      }
+      .form-control{
+        background-color: #f8f9fa;
+        padding: 5px 5px;
+        margin-bottom: 1.3rem;
+      }
+      .form-control:focus {
+
+        color: #000000;
+        background-color: #ffffff;
+        border: 3px solid #da5767;
+        outline: 0;
+        box-shadow: none;      
+      }
+      .signup {
+        margin:10rem auto;
+        max-width:500px;
+      }
+      .signup-header {
+      color:#fff;
+      text-align:center;
+      font-size:300%;
+      padding-top: 2rem;
+      margin-top: 10rem;
+      }
+      .form-group{
+        margin: -1rem;
+      }
+      .transaction-row {
+        font-weight: 400;
+      }
+      
+      .transaction-list-header {
+        text-align: left;
+      }
+      
+      .transaction-list-header > th {
+        padding: 5px 20px;
+      }
+      
+      .transaction-row > td {
+        padding: 5px 20px;
+      }
+      
+      .transaction-td-date {
+        font-weight: 400;
+      }
+      
+      .transaction-td-name {
+        font-weight: 400;
+      }
+      
+      .transaction-td-amount {
+        font-weight: 400;
+      }
+      
+      .transaction-td-mask {
+        font-weight: 400;
+      }
+      
+      .transaction-td-category {
+        font-weight: 400;
+      }
+   </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <header>
+    {% load static %}
+    <a href="{% url 'bright_money:index' %}">
+    </a>
+    <nav class="nav-bar-right">
+        {% if user.is_authenticated %}
+        <p>Hi, {{ username }}</p>
+        <a href="{% url 'bright_money:log-out' %}">Logout</a>
+        {% endif %}
+    </nav>
+  </header>
+  <body class="outer-container">
+    {% block body %} {% if messages %}
+    <div>
+      <ul>
+        {% for message in messages %}
+        <li class="messages">{{message}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+  </body>
+  {% block footer %}
+  <footer></footer>
+  {% endblock %}
+</html>
